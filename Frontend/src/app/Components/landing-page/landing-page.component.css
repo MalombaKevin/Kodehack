@@ -3,6 +3,10 @@
    height: 33em;
 }
 
+.hero .imageLearn{
+   filter: brightness(50%)
+}
+
 .content-cards{
    display: flex;
    justify-content: center;
