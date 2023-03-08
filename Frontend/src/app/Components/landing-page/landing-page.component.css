@@ -16,13 +16,14 @@
 }
 
 .card-question{
-   border: 1px solid black;
+   /* border: 1px solid black; */
    width: 15rem;
    height: 13rem;
    margin-top: -6rem;
    z-index:1;
    background-color: white;
    padding: 2px;
+   box-shadow:0 0 1rem rgba(0,0,0,0.2);
 }
 
 .card-question .icon {

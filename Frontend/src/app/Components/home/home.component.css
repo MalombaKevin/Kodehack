@@ -9,7 +9,7 @@ main{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 3rem;
+    gap: 10px;
  }
 
  .search-bar{
@@ -17,7 +17,7 @@ main{
  }
 
  .search-bar input{    
-    width: 40rem;
+    width: 40%;
     padding:0.5rem;
     text-align: center;
 }
@@ -25,8 +25,14 @@ main{
 .question-card{
     border: 1px solid whitesmoke;
     background-color: white;
-    padding: 2rem;
-    width: 60rem;
+    padding: 2%;
+    width:70%;
+    box-shadow:0 0 1rem rgba(0,0,0,0.2);
+}
+
+.question-card .title:hover{
+  color: blueviolet;
+  cursor: pointer;
 }
 
 .card-stats {

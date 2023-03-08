@@ -1,0 +1,33 @@
+.question{
+    display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+} 
+
+.rating-section{
+    display: flex;
+    flex-direction: column;
+} 
+
+.rating-section i{
+   font-size: 6rem;
+   color: grey;
+} 
+
+/* .rating-section .upvote{
+    margin-top: 2rem;
+  }  */
+
+.rating-section .downvote{
+   margin-top: -2rem;
+ } 
+
+.rating-section .rating-value{
+    margin-top: -2rem;
+} 
+
+.question-section, textarea{
+   width: 100%;
+} 
+
+

@@ -1,0 +1,91 @@
+
+main{
+    background: rgba(255, 248, 248, 1);
+}
+
+.profile-stats{
+    display: flex;
+    justify-content:flex-s;
+    gap: 8rem;
+}
+
+.profile img{
+    width: 200px;
+    height: 200px;
+}
+
+.profile button{
+   width: 100%;
+}
+
+.answer-card{
+box-shadow:0 0 1rem rgba(0,0,0,0.2);
+width: 15rem;
+height: 8rem;
+text-align: center;
+}
+
+.footer-card{
+   background-color: black;
+   padding: 1px;
+   color: white;
+   text-align: center;
+   margin-top: 16px;
+}
+
+.stats{
+   display: flex;
+   justify-content: space-around;
+   gap: 5rem;
+   margin-top: 3rem;
+ }
+
+
+
+.question-card{
+    border: 1px solid whitesmoke;
+    background-color: white;
+    padding: 2%;
+    padding-top: 1px;
+    box-shadow:0 0 1rem rgba(0,0,0,0.2);
+}
+
+.question-card .title:hover{
+  color: blueviolet;
+  cursor: pointer;
+}
+
+.card-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.total-questions{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.content-filters{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.content-filters p{
+    padding: 0.5rem;
+    background-color: transparent;
+}
+
+.content-filters p:hover{
+    background-color:blueviolet;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+
+ 
+ 
