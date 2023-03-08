@@ -1,0 +1,36 @@
+
+
+main{
+   background: rgba(255, 248, 248, 1);
+ }
+
+.top-languages-tags{
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+ }
+
+ .search-bar{
+    text-align: center;
+ }
+
+ .search-bar input{    
+    width: 40rem;
+    padding:0.5rem;
+    text-align: center;
+}
+
+.question-card{
+    border: 1px solid whitesmoke;
+    background-color: white;
+    padding: 2rem;
+    width: 60rem;
+}
+
+.card-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+ }

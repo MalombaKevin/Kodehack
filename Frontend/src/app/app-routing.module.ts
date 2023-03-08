@@ -5,7 +5,8 @@ import { LandingPageComponent } from './Components/landing-page/landing-page.com
 
 const routes: Routes = [
 
-  {path:'', component:LandingPageComponent}
+  {path:'', component:LandingPageComponent},
+  {path:'kodehack/home', component:HomeComponent}
 
 ];
 
