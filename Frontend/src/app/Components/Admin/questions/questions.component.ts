@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-questions',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './questions.component.html',
+  styleUrls: ['./questions.component.css']
 })
-export class LoginComponent {
+export class QuestionsComponent {
 
 }

@@ -1,0 +1,21 @@
+.answer-card {
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  width: 15rem;
+  height: 8rem;
+  text-align: center;
+}
+
+.footer-card {
+  background-color: black;
+  padding: 1px;
+  color: white;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.stats {
+  display: flex;
+  justify-content:flex-start;
+  gap: 5rem;
+  /* margin-top: 3rem; */
+}

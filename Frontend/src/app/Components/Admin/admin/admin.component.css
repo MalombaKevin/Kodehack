@@ -1,0 +1,19 @@
+
+
+
+.admin-navigation{
+  display: flex;
+  justify-content: space-around;
+} 
+
+
+.admin-nav{
+    background: rgba(217, 217, 217, 1);
+    color: black;
+} 
+
+.admin-nav:hover{
+    background-color:red;
+    color: white;
+} 
+

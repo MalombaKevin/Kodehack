@@ -1,0 +1,25 @@
+.signup p:hover {
+    color: blueviolet;
+    cursor: progress;
+}
+
+.forgot p:hover {
+    color: red;
+    cursor: progress;
+}
+
+legend i {
+    color: gold;
+    animation: shake 0.7s;
+    animation-iteration-count: infinite;
+    
+  
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
