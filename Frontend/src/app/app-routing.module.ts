@@ -12,6 +12,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { SignupComponent } from './Components/signup/signup.component';
+// import { AuthGuardService } from './Services/auth-guard.service';
 
 const routes: Routes = [
 

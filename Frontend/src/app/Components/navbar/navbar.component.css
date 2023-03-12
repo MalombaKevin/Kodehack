@@ -5,6 +5,12 @@ img{
 }
 
 .profile-link:hover{
-   color: blueviolet;
    cursor: pointer;
- } 
+} 
+
+.active{
+   color: red;
+   background-color: transparent;   
+   font-size: x-large;
+}
+

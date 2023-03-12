@@ -9,6 +9,9 @@
 }
 
 
+/* fieldset, legend {
+    all: revert;
+  } */
 
 legend i {
     color: gold;

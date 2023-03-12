@@ -51,5 +51,11 @@ main{
       gap: 5px;
    }
 
+   .search-bar input{    
+      width: 80%;
+      padding:0.2rem;
+      text-align: center;
+  }
+
 
 }

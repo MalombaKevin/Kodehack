@@ -15,6 +15,14 @@ legend i {
     
   
 }
+/* 
+fieldset, legend {
+    all: revert;
+ } */
+
+ .reset {
+    all: revert;
+}
 
 @keyframes shake {
     0% { transform: rotate(0deg); }

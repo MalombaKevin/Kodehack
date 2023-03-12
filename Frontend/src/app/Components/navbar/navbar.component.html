@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+<nav class="navbar navbar-expand-lg  navbar-dark" style="background-color: black;">
 
   <div class="container">
     <a class="navbar-brand " routerLink=""><span><i class="fa-solid fa-code text-warning"></i></span>
@@ -19,46 +19,44 @@
       </form>
 
       <button class="btn btn-md text-white fw-bolder" style="background-color: red;" routerLink="bug">
-        Add Question
+        Ask Question
       </button>
 
-      <div class="profile-dropdown ps-5">
+      <div class="profile-dropdown">
 
         <div class="image nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false"><img  
-        src="https://images.unsplash.com/photo-1588442025058-dffe84001858?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=693&q=80"
-        alt=""> </a>
+          <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false"><img
+              src="https://images.unsplash.com/photo-1588442025058-dffe84001858?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=693&q=80"
+              alt=""> </a>
 
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li>
-            <p routerLink="profile" class=" dropdown-item profile-link text-center fw-bold h5">Profile</p>
-            <hr class="dropdown-divider">
-          </li>
-          <li><p class="dropdown-item text-center profile-link text-center fw-bold h5" href="#">Logout</p></li>
-        </ul>
-   
-      </div>
-      </div>
-
-      <!-- <ul class="profile">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-           kevin
-          </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <p class="dropdown-item text-center" routerLink="profile">Profile</p>
-            </li>
-            <!-- <li><p class="dropdown-item" href="#">L</p></li> -->
-            <!-- <li>
+              <p routerLink="profile" routerLinkActive="active" class=" dropdown-item profile-link text-center fw-bold h6">Profile</p>
               <hr class="dropdown-divider">
+
             </li>
-            <li><a class="dropdown-item text-center " href="#">Logout</a></li>
+
+            <li>
+              <p routerLink="home" routerLinkActive="active"  class=" dropdown-item profile-link text-center fw-bold h6">Home</p>
+            </li>
+            <hr class="dropdown-divider">
+
+
+            <!-- <li>
+              <p routerLink="bug" routerLinkActive="active"  class=" dropdown-item profile-link text-center fw-bold h6">Add Question</p>
+            <!-- </li> -->
+            <!-- <hr class="dropdown-divider"> --> 
+            <li>
+              <p class="dropdown-item text-center profile-link text-center fw-bold h6" href="#" routerLink="">Logout</p>
+            </li>
           </ul>
-      </ul> -->
-      
+
+        </div>
+      </div>
+
+     
+
     </div>
   </div>
 </nav>

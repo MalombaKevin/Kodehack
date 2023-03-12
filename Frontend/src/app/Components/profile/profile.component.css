@@ -42,6 +42,12 @@ text-align: center;
    margin-top: 3rem;
  }
 
+ .delete-edit{
+    display: flex;
+    justify-content:flex-end;
+    gap: 0.5rem;
+}
+
 
 
 .question-card{
@@ -96,7 +102,51 @@ text-align: center;
         flex-wrap: wrap;
         gap: 1rem;
     }
+
+    .delete-edit{
+        display: flex;
+        justify-content:flex-end;
+        gap: 1rem;
+    }
  
+
+.profile{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+ }
+ 
+ }
+
+ @media only screen and (min-width: 769px) and (max-width: 1023px) {
+    .profile-stats{
+        display: flex;
+        justify-content:flex-s;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .delete-edit{
+        display: flex;
+        justify-content:flex-end;
+        gap: 1rem;
+    }
+ 
+
+.profile{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+ }
+
+ .stats{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 5rem;
+    margin-top: 3rem;
+  }
  
  }
 

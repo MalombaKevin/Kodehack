@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from "./Components/home/home.component";
 import { NavbarComponent } from "./Components/navbar/navbar.component";
 import { FooterComponent } from "./Components/footer/footer.component";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -15,9 +16,11 @@ import { FooterComponent } from "./Components/footer/footer.component";
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
+        FormsModule,
         AppRoutingModule,
         NavbarComponent,
-        FooterComponent
+        FooterComponent,
+       
     ]
 })
 export class AppModule { }
