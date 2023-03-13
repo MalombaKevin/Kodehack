@@ -1,52 +1,68 @@
 <main>
 
     <div class="container ps-lg-5  pe-lg-5 ">
-    
-        <form action="" class="p-lg-5">
-           
+
+        <form action="" class="p-lg-5" [formGroup]="form" (ngSubmit)="submitForm()" >
+
             <fieldset>
-                <legend><i class="fa-solid fa-hand"></i> 
-                <span class="h5"> Welcome to Kodehack, </span> <span class="h6 text-primary fw-bolder" style="cursor:progress;">  Take a tour
-                
-                
-                
-                
-                
-                
-                </span>
+                <legend><i class="fa-solid fa-hand"></i>
+                    <span class="h5"> Welcome to Kodehack, </span> <span class="h6 text-primary fw-bolder"
+                        style="cursor:progress;"> Take a tour
+                    </span>
                 </legend>
 
-             <div class="input-title ps-5 pe-5 pb-2">
-                    <label for="title" class="fw-bolder">Username</label><br>
-                    <input type="text" name="" id="" placeholder="Username" class="form-control">
-            </div>
-    
-            <div class="input-title ps-5 pe-5 pb-2">
-                <label for="title" class="fw-bolder">Email</label><br>
-                <input type="text" name="email" id="email" placeholder="Your email" class="form-control">
-            </div>
-    
-           
-            <div class="input-question ps-5 pe-5 pb-2">
-                <label for="" class="fw-bolder">Password</label> <br>
-               <input type="password" name="" id="" class="form-control">
-            </div>
-    
-            <div class="input-question ps-5 pe-5 pb-2 d-flex justify-content-between forgot" >
-                <button class="btn btn-outline-primary">Create Account</button>
-            </div>
+                <div class="input-title ps-5 pe-5 pb-2">
+                    <label for="title" class="fw-bolder">Username</label><span *ngIf="form.get('username')?.valid && form.get('username')?.touched" class="errorMessage"> 
+                    &nbsp;<i class="fa-solid fa-circle-check"></i></span><br>
 
-            <div class="ps-5 pe-5 pb-2">
-                <div>  
-                <span > Already have an account, </span>
-                 <span class="signup h5 fw-bold" routerLink="/login"> Login</span>
-            </div>
-            </div>
+                    <input type="text" name="username" id="" placeholder="Username" class="form-control" formControlName="username">
+
+                    <span *ngIf="!form.get('username')?.valid && form.get('username')?.touched" class="errorMessage"> Username must be filled</span>
+                </div>
+
+                <div class="input-title ps-5 pe-5 pb-2">
+                    <label for="title" class="fw-bolder">Email</label><span *ngIf="form.get('email')?.valid && form.get('email')?.touched" class="errorMessage"> 
+                        &nbsp;<i class="fa-solid fa-circle-check"></i></span><br>
+
+                    <input type="text" name="email" id="email" placeholder="Your email" class="form-control" formControlName="email" >
+
+                    <span class="error" *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
+
+                        <span class="error" *ngIf="form.get('email')!.errors!['required']" class="errorMessage"> PLease Enter an
+                            email</span>
+                            
+                        <span class="error" *ngIf="form.get('email')!.errors!['email']" class="errorMessage"> PLease Enter A Valid email</span>
     
-        </fieldset>
     
+                    </span>
+                </div>
+
+
+                <div class="input-question ps-5 pe-5 pb-2">
+                    <label for="" class="fw-bolder">Password</label><span *ngIf="form.get('password')?.valid && form.get('password')?.touched" class="errorMessage"> 
+                    &nbsp;<i class="fa-solid fa-circle-check"></i></span> <br>
+
+                    <input type="password" name="" id="" class="form-control" formControlName="password">
+
+                    <span *ngIf="!form.get('password')?.valid && form.get('password')?.touched" class="errorMessage"> Password must be filled</span>
+                </div>
+
+                <div class="input-question ps-5 pe-5 pb-2">
+                    <button class="btn btn-outline-primary" [disabled]="!form.valid">Create Account</button> <br>
+
+                    <span *ngIf="!form.valid && form.touched" class="errorMessage">Fill in all the fields to create an account</span>
+                </div>
+
+                <div class="ps-5 pe-5 pb-2">
+                    <div>
+                        <span> Already have an account, </span>
+                        <span class="signup h5 fw-bold" routerLink="/login"> Login</span>
+                    </div>
+                </div>
+
+            </fieldset>
+
         </form> <br>
     </div>
-    
-    </main>
 
+</main>
