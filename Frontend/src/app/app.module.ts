@@ -7,10 +7,13 @@ import { HomeComponent } from "./Components/home/home.component";
 import { NavbarComponent } from "./Components/navbar/navbar.component";
 import { FooterComponent } from "./Components/footer/footer.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TruncatePipePipe } from './Pipes/truncate-pipe.pipe';
+
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+    
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -21,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         AppRoutingModule,
         NavbarComponent,
         FooterComponent,
+        TruncatePipePipe
        
     ]
 })

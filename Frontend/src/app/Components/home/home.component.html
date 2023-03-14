@@ -21,9 +21,8 @@
 
             <div class="question-card" align="left">
 
-                <h5 routerLink="/debug" class="title">Title of the question</h5>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus deleniti nam, eum minima atque
-                    tempore maiores. Soluta nisi rerum iusto.</p>
+                <h5 routerLink="/debug" class="title" appTitleColor>Title of the question</h5>
+                <p >  {{text |truncatePipe}}</p>
 
                     <div class="card-analytics card-stats">
                         <div class="votes-answers card-stats">

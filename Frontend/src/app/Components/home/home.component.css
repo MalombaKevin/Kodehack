@@ -31,8 +31,8 @@ main{
 }
 
 .question-card .title:hover{
-  color: blueviolet;
   cursor: pointer;
+  font-size: x-large;
 }
 
 .card-stats {
