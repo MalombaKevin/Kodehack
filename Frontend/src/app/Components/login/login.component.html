@@ -37,13 +37,19 @@
                 </div>
 
                 <div class="input-question ps-5 pe-5 pb-2 d-flex justify-content-between forgot">
-                    <button class="btn btn-outline-primary">Login</button>
+                    <button class="btn btn-outline-primary" (click)="AuthService.login()">Login</button>
                     <p class="h6">Forgot Password</p>
+
+                   
+                </div>
+
+                <div class="input-question ps-5 pe-5 pb-2">
+                    <span *ngIf="!form.valid && form.touched" class="errorMessage">Fill in all the fields to login</span>
                    
                 </div>
 
 
-                <span *ngIf="!form.valid && form.touched" class="errorMessage">Fill in all the fields to login</span>
+              
 
                 <div class="signup ps-5 pe-5 pb-2">
                     <p routerLink="/signup" class="h6">

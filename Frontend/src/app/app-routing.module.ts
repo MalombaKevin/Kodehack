@@ -12,19 +12,19 @@ import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { SignupComponent } from './Components/signup/signup.component';
+import { AuthGuardService } from './Services/auth-guard.service';
 // import { AuthGuardService } from './Services/auth-guard.service';
 
 const routes: Routes = [
 
-  {path:'', component:LandingPageComponent},
-  {path:'home', component:HomeComponent},
-  {path:'profile', component:ProfileComponent},
-  {path:'debug', component:DebugPageComponent},
-  {path:'bug', component:AddQuestionComponent},
-  {path:'signup', component:SignupComponent},
-  {path:'login', component:LoginComponent},
-  {path:'bug', component:AddQuestionComponent},
-  {path:'admin', component:AdminComponent,
+  {path:'', loadComponent:()=>import('../app/Components/landing-page/landing-page.component').then(l=>l.LandingPageComponent)},
+  {path:'home', canActivate:[AuthGuardService],loadComponent:()=>import('../app/Components/home/home.component').then(l=>l.HomeComponent)},
+  {path:'profile', canActivate:[AuthGuardService],loadComponent:()=>import('../app/Components/profile/profile.component').then(l=>l.ProfileComponent)},
+  {path:'debug', canActivate:[AuthGuardService], loadComponent:()=>import('../app/Components/debug-page/debug-page.component').then(l=>l.DebugPageComponent)},
+  {path:'bug', canActivate:[AuthGuardService], component:AddQuestionComponent},
+  {path:'signup', loadComponent:()=>import('../app/Components/signup/signup.component').then(l=>l.SignupComponent)},
+  {path:'login', loadComponent:()=>import('./Components/login/login.component').then(l=>l.LoginComponent)},
+  {path:'admin', loadComponent:()=>import('../app/Components/Admin/admin/admin.component').then(l=>l.AdminComponent),
 
   children:[
     {path:'', component:AnalyticsComponent},
@@ -34,9 +34,6 @@ const routes: Routes = [
   ]
 },
 {path:'**', component:PageNotFoundComponent}
-
- 
-
 ];
 
 @NgModule({

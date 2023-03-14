@@ -12,17 +12,19 @@
       <ul class="navbar-nav me-auto">
 
       </ul>
-      <form class="d-flex pe-3">
-        <button class="btn btn-md text-light me-2" type="submit" style="border: none;" routerLink="login">Login</button>
-        <button class="btn btn-md btn-light text-dark" type="submit" style="border: none; color: white;"
-          routerLink="signup">Sign Up</button>
-      </form>
+      <div class="d-flex pe-3">
+        <button class="btn btn-md text-light me-2" style="border: none;" routerLink="login"*ngIf="!authService.isLoggedIn">Login</button>
 
-      <button class="btn btn-md text-white fw-bolder" style="background-color: red;" routerLink="bug">
+        <button class="btn btn-md btn-light text-dark"  style="border: none; color: white;"
+        routerLink="signup" *ngIf="!authService.isLoggedIn">Sign Up</button>
+
+      </div>
+
+      <button class="btn btn-md text-white fw-bolder" style="background-color: red;" routerLink="bug" *ngIf="authService.isLoggedIn">
         Ask Question
       </button>
 
-      <div class="profile-dropdown">
+      <div class="profile-dropdown" *ngIf="authService.isLoggedIn">
 
         <div class="image nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
@@ -48,7 +50,7 @@
             <!-- </li> -->
             <!-- <hr class="dropdown-divider"> --> 
             <li>
-              <p class="dropdown-item text-center profile-link text-center fw-bold h6" href="#" routerLink="">Logout</p>
+              <p class="dropdown-item text-center profile-link text-center fw-bold h6" (click)="authService.logout()">Logout</p>
             </li>
           </ul>
 

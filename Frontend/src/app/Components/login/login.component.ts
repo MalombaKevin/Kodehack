@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +23,11 @@ export class LoginComponent implements OnInit{
     
   }
 
+  constructor(public AuthService:AuthService){}
+
   submitForm(){   
    console.log(this.form);
+
     
   }
   
