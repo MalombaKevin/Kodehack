@@ -3,7 +3,7 @@ export interface RegisterUser {
     username: string;
     email: string
     password: string
-    role?: string
+    isAdmin?: boolean
     token?: string
 }
 
@@ -11,4 +11,5 @@ export interface LoginUser {
     email: string
     password: string
     token?: string
+    isAdmin?: boolean
 }

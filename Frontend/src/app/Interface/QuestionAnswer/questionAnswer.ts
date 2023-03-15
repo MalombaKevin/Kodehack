@@ -28,3 +28,9 @@ export interface QuestionVote{
     questionId:string
     userId:string  
 }
+
+export interface AnswerVote{
+    vote:string    
+    answer:string
+    userId:string  
+}
