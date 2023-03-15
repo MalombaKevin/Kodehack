@@ -9,6 +9,7 @@
         <div class="profile-stats">
 
             <div class="profile">
+              
                 <img src="https://images.unsplash.com/photo-1588442025058-dffe84001858?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=693&q=80"
                     alt="">
 
@@ -56,18 +57,39 @@
                     <i class="fa-solid fa-trash pt-1 pe-lg-3 h5" style="color: red;"></i>
                 </div>
                 <h5 routerLink="/debug" class="title fw-bold">Title of the question</h5>
-                <p>Lorem ipsum dolor sit amet consectetur</p>
+                <p >  {{text |truncatePipe}}</p>
 
                 <div class="card-analytics">
                     <div class="votes-answers card-stats">
                         <p> <span class="fw-bold"> 10</span>
                             Votes</p>
                         <p><span class="fw-bold"> 10</span> Answers</p>
-                        <span><span class="fw-bold">Posted at</span> 3/3/2023</span>
+                        <span><span class="fw-bold">Posted on</span> 3/3/2023</span>
                     </div>
                 </div>
             </div>
 
+           
+         
+            <div class="question-card" align="left">
+                <div  class="delete-edit">
+                    <i class="fa-sharp fa-solid fa-pen-to-square pt-1 pe-lg-3 h5" style="color: blueviolet;"></i>
+                    <i class="fa-solid fa-trash pt-1 pe-lg-3 h5" style="color: red;"></i>
+                </div>
+                <h5 routerLink="/debug" class="title fw-bold">Title of the question</h5>
+                <p >  {{text |truncatePipe}}</p>
+
+                <div class="card-analytics">
+                    <div class="votes-answers card-stats">
+                        <p> <span class="fw-bold"> 10</span>
+                            Votes</p>
+                        <p><span class="fw-bold"> 10</span> Answers</p>
+                        <span><span class="fw-bold">Posted on</span> 3/3/2023</span>
+                    </div>
+                </div>
+            </div>
+
+           
            
             <div class="question-card" align="left">
                 <div  class="delete-edit">
@@ -75,33 +97,14 @@
                     <i class="fa-solid fa-trash pt-1 pe-lg-3 h5" style="color: red;"></i>
                 </div>
                 <h5 routerLink="/debug" class="title fw-bold">Title of the question</h5>
-                <p>Lorem ipsum dolor sit amet consectetur</p>
+                <p >  {{text |truncatePipe}}</p>
 
                 <div class="card-analytics">
                     <div class="votes-answers card-stats">
                         <p> <span class="fw-bold"> 10</span>
                             Votes</p>
                         <p><span class="fw-bold"> 10</span> Answers</p>
-                        <span><span class="fw-bold">Posted at</span> 3/3/2023</span>
-                    </div>
-                </div>
-            </div>
-
-           
-            <div class="question-card" align="left">
-                <div  class="delete-edit">
-                    <i class="fa-sharp fa-solid fa-pen-to-square pt-1 pe-lg-3 h5" style="color: blueviolet;"></i>
-                    <i class="fa-solid fa-trash pt-1 pe-lg-3 h5" style="color: red;"></i>
-                </div>
-                <h5 routerLink="/debug" class="title fw-bold">Title of the question</h5>
-                <p>Lorem ipsum dolor sit amet consectetur</p>
-
-                <div class="card-analytics">
-                    <div class="votes-answers card-stats">
-                        <p> <span class="fw-bold"> 10</span>
-                            Votes</p>
-                        <p><span class="fw-bold"> 10</span> Answers</p>
-                        <span><span class="fw-bold">Posted at</span> 3/3/2023</span>
+                        <span><span class="fw-bold">Posted on</span> 3/3/2023</span>
                     </div>
                 </div>
             </div>
