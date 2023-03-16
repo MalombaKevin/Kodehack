@@ -14,6 +14,9 @@ CREATE TABLE comments (
     FOREIGN KEY (answerId) REFERENCES answers(answerId)
 );
 
+INSERT INTO comments
+VALUES ('2', 'YES WE CAN', '12-12-12', '1', '1')
+
 SELECT * FROM comments
 
 DROP TABLE comments

@@ -16,4 +16,7 @@ CREATE TABLE answers (
 
 SELECT * FROM answers
 
+INSERT INTO answers
+VALUES('2','Bonjour', '12-12-23', '1', '2')
+
 DROP TABLE answers

@@ -14,8 +14,10 @@ CREATE TABLE users (
     is_deleted BIT NOT NULL DEFAULT 0,
 );
 
-SELECT * from users
+-- UNIQUE KEY WORD FOR EMAIL
+-- ON DELETE CASCADE
 
+SELECT * from users
 
 INSERT INTO users
 VALUES ('1', 'willymalomba', '235595', '12-13-15', 0, 1)
