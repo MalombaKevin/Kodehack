@@ -1,0 +1,40 @@
+
+#Questions
+
+#1 Get all the questions
+GET http://localhost:5000/kodehack
+###
+
+#2 Ask a question
+POST http://localhost:5000/kodehack 
+Content-Type: application/json
+
+{
+"title":"Unaitwa nani",
+"category":"JS",
+"question":"How to use alert, prompt",
+"timeCreated":"12-12-12"   
+}
+###
+
+#3 Get one question
+GET  http://localhost:5000/kodehack/26401964-9545-47c3-8358-a841ef96d3c3
+###
+
+#4 Update question
+PUT http://localhost:5000/kodehack/2
+Content-Type: application/json
+
+{
+"title":"hi there friend updated now",
+"category":"JS updated",
+"question":"How to use alert, prompt",
+"timeCreated":"12-12-12",
+"userId":null
+}
+
+###
+
+#5 Delete question
+DELETE  http://localhost:5000/kodehack/26401964-9545-47c3-8358-a841ef96d3c3
+

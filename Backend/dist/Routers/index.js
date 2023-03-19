@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const kodehackController_1 = require("../Controllers/kodehackController");
+const router = (0, express_1.Router)();
+router.get('', kodehackController_1.getAllQuestions);
+router.post('', kodehackController_1.addQuestion);
+router.get('/:id', kodehackController_1.getOneQuestion);
+router.put('/:id', kodehackController_1.updateQuestion);
+router.delete('/:id', kodehackController_1.deleteQuestion);
+exports.default = router;

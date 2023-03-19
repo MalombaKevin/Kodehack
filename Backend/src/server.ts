@@ -1,12 +1,13 @@
 import express, { json } from 'express'
+import router from './Routers'
 
 const app = express() 
 
 app.use(json()) 
 
-app.listen(4000, ()=>{
+app.use('/kodehack', router) 
 
-    console.log('Kodehack Backend is running');
-    
-}
-) 
+app.listen(5000,()=>{
+
+    console.log('Kodehack Backend is running');    
+}) 
