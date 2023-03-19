@@ -1,11 +1,15 @@
 import express, { json } from 'express'
-import router from './Routers'
+import questionsRouter from './Routers/question'
+import answersRouter from './Routers/answers'
+import commentsRouter from './Routers/comments'
 
 const app = express() 
 
 app.use(json()) 
 
-app.use('/kodehack', router) 
+app.use('/kodehack/question', questionsRouter) 
+app.use('/kodehack/answer', answersRouter) 
+app.use('/kodehack/comments', commentsRouter) 
 
 app.listen(5000,()=>{
 

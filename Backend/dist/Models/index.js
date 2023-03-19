@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Question = void 0;
+exports.Answer = exports.Question = void 0;
 class Question {
     constructor(questionId, title, category, question, timeCreated, userId) {
         this.questionId = questionId;
@@ -11,3 +11,13 @@ class Question {
     }
 }
 exports.Question = Question;
+class Answer {
+    constructor(answerId, answer, timeCreated, userId, questionId) {
+        this.answerId = answerId;
+        this.answer = answer;
+        this.timeCreated = timeCreated;
+        this.userId = userId;
+        this.questionId = questionId;
+    }
+}
+exports.Answer = Answer;

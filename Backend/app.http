@@ -2,11 +2,11 @@
 #Questions
 
 #1 Get all the questions
-GET http://localhost:5000/kodehack
+GET http://localhost:5000/kodehack/question
 ###
 
 #2 Ask a question
-POST http://localhost:5000/kodehack 
+POST http://localhost:5000/kodehack/question
 Content-Type: application/json
 
 {
@@ -18,11 +18,11 @@ Content-Type: application/json
 ###
 
 #3 Get one question
-GET  http://localhost:5000/kodehack/26401964-9545-47c3-8358-a841ef96d3c3
+GET  http://localhost:5000/kodehack/question/2
 ###
 
 #4 Update question
-PUT http://localhost:5000/kodehack/2
+PUT http://localhost:5000/kodehack/question
 Content-Type: application/json
 
 {
@@ -36,5 +36,77 @@ Content-Type: application/json
 ###
 
 #5 Delete question
-DELETE  http://localhost:5000/kodehack/26401964-9545-47c3-8358-a841ef96d3c3
+DELETE  http://localhost:5000/kodehack/question/26401964-9545-47c3-8358-a841ef96d3c3
 
+###
+
+# Answers
+#1 Get all the answers
+GET http://localhost:5000/kodehack/answer
+###
+
+
+#2 Get one Answer
+GET  http://localhost:5000/kodehack/answer/1
+###
+
+
+###
+
+#3 Answer a question
+POST http://localhost:5000/kodehack/answer
+Content-Type: application/json
+
+{
+"answer": "Hi there",
+  "timeCreated": "2023-12-12T00:00:00.000Z",
+  "userId": "7",
+  "questionId": "2"
+   
+}
+###
+
+#4 Edit an answer
+PUT http://localhost:5000/kodehack/question
+Content-Type: application/json
+
+{
+"title":"hi there friend updated now",
+"category":"JS updated",
+"question":"How to use alert, prompt",
+"timeCreated":"12-12-12",
+"userId":null
+}
+
+###
+
+#5 Delete an answer
+DELETE  http://localhost:5000/kodehack/answer/2
+
+###
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Comments
+#1 Get all the comments
+GET http://localhost:5000/kodehack/comments
+###
+
+#2 Delete comments
+DELETE  http://localhost:5000/kodehack/comments/3
+###
