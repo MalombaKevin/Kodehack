@@ -27,10 +27,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
-const Routers_1 = __importDefault(require("./Routers"));
+const question_1 = __importDefault(require("./Routers/question"));
+const answers_1 = __importDefault(require("./Routers/answers"));
+const comments_1 = __importDefault(require("./Routers/comments"));
 const app = (0, express_1.default)();
 app.use((0, express_1.json)());
-app.use('/kodehack', Routers_1.default);
+app.use('/kodehack/question', question_1.default);
+app.use('/kodehack/answer', answers_1.default);
+app.use('/kodehack/comments', comments_1.default);
 app.listen(5000, () => {
     console.log('Kodehack Backend is running');
 });

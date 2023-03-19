@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllAnswers = exports.deleteQuestion = exports.updateQuestion = exports.addQuestion = exports.getOneQuestion = exports.getAllQuestions = void 0;
+exports.deleteQuestion = exports.updateQuestion = exports.addQuestion = exports.getOneQuestion = exports.getAllQuestions = void 0;
 const mssql_1 = __importDefault(require("mssql"));
 const uuid_1 = require("uuid");
 const db_config_1 = __importDefault(require("../Config/db-config"));
@@ -116,16 +116,3 @@ const deleteQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.deleteQuestion = deleteQuestion;
-// answers
-// get all answers controller
-const getAllAnswers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const pool = yield mssql_1.default.connect(db_config_1.default);
-        const answers = yield (yield pool.request().execute('getAllAnswers')).recordset;
-        res.status(200).json(answers);
-    }
-    catch (error) {
-        res.status(404).json(error.message);
-    }
-});
-exports.getAllAnswers = getAllAnswers;
