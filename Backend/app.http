@@ -81,3 +81,23 @@ GET http://localhost:5000/kodehack/comments
 #2 Delete comments
 DELETE  http://localhost:5000/kodehack/comments/1
 ###
+
+
+
+# users
+# 1.0 get all users
+GET http://localhost:5000/kodehack/users
+###
+# 2.0 Add users
+
+
+
+
+
+
+#Signup
+POST http://localhost:5000/kodehack/auth/register
+
+###
+#Login
+POST http://localhost:5000/kodehack/auth/login
