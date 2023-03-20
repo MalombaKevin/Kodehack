@@ -2,6 +2,7 @@ import { Request, RequestHandler, Response } from 'express'
 import mssql from 'mssql'
 import { v4 as uid } from 'uuid'
 import DBconfig from '../Config/db-config'
+import { questionSchema } from '../Helpers'
 import { Question } from '../Models'
 
 interface ExtendedRequest extends Request {
@@ -57,6 +58,12 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
     try {
         const questionId = uid()
         const { title, category, question, timeCreated, userId } = req.body
+
+        const {error} = questionSchema.validate(req.body)
+        if (error) {           
+        res.status(422).json(error.details[0].message)
+        }
+
         const pool = await mssql.connect(DBconfig)
         await pool.request()
 
@@ -83,6 +90,7 @@ export async function updateQuestion(req: ExtendedRequest, res: Response) {
 
     try {
         const { title, category, question, timeCreated, userId } = req.body
+
         const pool = await mssql.connect(DBconfig)
 
         const oneQuestion: Question[] = await (await pool.request()

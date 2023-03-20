@@ -16,6 +16,7 @@ exports.deleteQuestion = exports.updateQuestion = exports.addQuestion = exports.
 const mssql_1 = __importDefault(require("mssql"));
 const uuid_1 = require("uuid");
 const db_config_1 = __importDefault(require("../Config/db-config"));
+const Helpers_1 = require("../Helpers");
 // get all questions controller
 const getAllQuestions = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -52,6 +53,10 @@ function addQuestion(req, res) {
         try {
             const questionId = (0, uuid_1.v4)();
             const { title, category, question, timeCreated, userId } = req.body;
+            const { error } = Helpers_1.questionSchema.validate(req.body);
+            if (error) {
+                res.status(422).json(error.details[0].message);
+            }
             const pool = yield mssql_1.default.connect(db_config_1.default);
             yield pool.request()
                 .input('id', questionId)

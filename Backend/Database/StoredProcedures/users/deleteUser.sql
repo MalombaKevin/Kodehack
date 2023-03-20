@@ -11,8 +11,6 @@ END
 
 EXEC DeleteUser  @id=1
 
--- Drop the stored procedure called 'StoredProcedureName' in schema 'SchemaName'
-
 DROP PROCEDURE DeleteUser
 
 SELECT * FROM users

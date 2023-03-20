@@ -8,3 +8,5 @@ BEGIN
 END
 
 EXEC GetUserByEmail @email=willymalomba
+
+DROP PROCEDURE GetUserByEmail
