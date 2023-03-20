@@ -2,7 +2,6 @@ import { Request, RequestHandler, Response } from 'express'
 import mssql from 'mssql'
 import { v4 as uid } from 'uuid'
 import DBconfig from '../Config/db-config'
-import db from '../DatabaseHelpers/db-connection'
 import { Question } from '../Models'
 
 interface ExtendedRequest extends Request {
@@ -57,8 +56,7 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
 
     try {
         const questionId = uid()
-        const userId = uid()
-        const { title, category, question, timeCreated } = req.body
+        const { title, category, question, timeCreated, userId } = req.body
         const pool = await mssql.connect(DBconfig)
         await pool.request()
 
@@ -74,7 +72,7 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
 
     } catch (error: any) {
 
-        res.status(404).json(error.message)
+        res.status(500).json(error.message)
     }
 
 
@@ -84,8 +82,7 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
 export async function updateQuestion(req: ExtendedRequest, res: Response) {
 
     try {
-        const userId = null
-        const { title, category, question, timeCreated } = req.body
+        const { title, category, question, timeCreated, userId } = req.body
         const pool = await mssql.connect(DBconfig)
 
         const oneQuestion: Question[] = await (await pool.request()
@@ -120,6 +117,7 @@ export async function updateQuestion(req: ExtendedRequest, res: Response) {
 
 }
 
+// Delete Question
 export const deleteQuestion = async (req: ExtendedRequest, res: Response) => {
 
     try {

@@ -51,8 +51,7 @@ function addQuestion(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const questionId = (0, uuid_1.v4)();
-            const userId = (0, uuid_1.v4)();
-            const { title, category, question, timeCreated } = req.body;
+            const { title, category, question, timeCreated, userId } = req.body;
             const pool = yield mssql_1.default.connect(db_config_1.default);
             yield pool.request()
                 .input('id', questionId)
@@ -65,7 +64,7 @@ function addQuestion(req, res) {
             res.status(201).json(({ message: 'Question Added' }));
         }
         catch (error) {
-            res.status(404).json(error.message);
+            res.status(500).json(error.message);
         }
     });
 }
@@ -74,8 +73,7 @@ exports.addQuestion = addQuestion;
 function updateQuestion(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userId = null;
-            const { title, category, question, timeCreated } = req.body;
+            const { title, category, question, timeCreated, userId } = req.body;
             const pool = yield mssql_1.default.connect(db_config_1.default);
             const oneQuestion = yield (yield pool.request()
                 .input('id', req.params.id)
@@ -99,6 +97,7 @@ function updateQuestion(req, res) {
     });
 }
 exports.updateQuestion = updateQuestion;
+// Delete Question
 const deleteQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const pool = yield mssql_1.default.connect(db_config_1.default);

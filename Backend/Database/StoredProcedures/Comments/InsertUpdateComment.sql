@@ -28,7 +28,7 @@ BEGIN
     END
 END
 
-EXEC InsertUpdateComment  @Id='3', @comment='Kama si sasa ni sasa hivi',@timeCreated ='2002-12-12',
+EXEC InsertUpdateComment  @Id='5', @comment='Kama si sasa ni sasa hivi',@timeCreated ='2002-12-12',
 @userId=1,
 @answerId='1'
 

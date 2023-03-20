@@ -6,7 +6,7 @@ import { Answer } from '../Models'
 
 interface ExtendedRequest extends Request {
 
-    body: { answer: string, timeCreated: Date, userId: string, questionId: string }
+    body: { answer: string,questionId: string,userId: string, timeCreated: Date }
     params: { id: string }
 
 }
@@ -52,34 +52,69 @@ export const getOneAnswer = async (req: ExtendedRequest, res: Response) => {
 
 }
 
-// Answer a question
+// Add an answer
 export async function addAnswer(req: ExtendedRequest, res: Response) {
 
     try {
         const answerId = uid()
-        const questionId = uid()
-        const userId = uid()
-
-        const { answer, timeCreated } = req.body
+        const { answer, timeCreated, userId, questionId } = req.body
         const pool = await mssql.connect(DBconfig)
         await pool.request()
 
             .input('id', answerId)
-            .input('answer', answer)
+            .input('answer', answer) 
+            .input('questionId', questionId)           
+            .input('userId', userId)           
             .input('timeCreated', timeCreated)
-            .input('userId', userId)
-            .input('questionId', questionId)
             .execute('InsertUpdateAnswer')
 
-        res.status(201).json(({ message: 'Answer Added' }))
+            res.status(201).json(({ message: 'Answer Added Successfully' }))
 
     } catch (error: any) {
 
-        res.status(404).json(error.message)
+        res.status(500).json(error.message)
     }
 
 
 }
+// update answer controller
+export async function updateAnswer(req: ExtendedRequest, res: Response) {
+
+    try {
+        const { answer, timeCreated, userId, questionId } = req.body
+        const pool = await mssql.connect(DBconfig)
+
+        const oneAnswer: Answer[] = await (await pool.request()
+
+            .input('id', req.params.id)
+            .execute('getAnswersById')
+
+        ).recordset[0]
+
+        if (oneAnswer) {
+            await pool.request()
+
+            .input('id', req.params.id)
+            .input('answer', answer) 
+            .input('questionId', questionId)           
+            .input('userId', userId)           
+            .input('timeCreated', timeCreated)
+            .execute('InsertUpdateAnswer')
+
+            return res.status(201).json(({ message: 'Question Updated' }))
+        }
+
+        res.status(404).json(({ error: 'Question Not Found' }))
+
+
+
+    } catch (error: any) {
+
+        res.status(500).json(error.message)
+    }
+
+}
+
 
 
 

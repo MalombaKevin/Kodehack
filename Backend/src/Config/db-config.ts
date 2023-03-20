@@ -11,7 +11,7 @@ const DBconfig = {
     database: 'kodehack',
     server: 'localhost',
     pool: {
-      max: 30,
+      max: 100,
       min: 0,
       idleTimeoutMillis: 30000
     },

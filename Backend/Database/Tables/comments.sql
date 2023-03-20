@@ -11,11 +11,11 @@ CREATE TABLE comments (
     FOREIGN KEY (userId) REFERENCES users(userId),
 
     answerId VARCHAR(255),
-    FOREIGN KEY (answerId) REFERENCES answers(answerId)
+    FOREIGN KEY (answerId) REFERENCES answers(answerId) ON DELETE CASCADE
 );
 
 INSERT INTO comments
-VALUES ('2', 'YES WE CAN', '12-12-12', '1', '1')
+VALUES ('1', 'YES WE CAN', '12-12-12', '1', '1')
 
 SELECT * FROM comments
 

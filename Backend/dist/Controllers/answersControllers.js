@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteAnswer = exports.addAnswer = exports.getOneAnswer = exports.getAllAnswers = void 0;
+exports.deleteAnswer = exports.updateAnswer = exports.addAnswer = exports.getOneAnswer = exports.getAllAnswers = void 0;
 const mssql_1 = __importDefault(require("mssql"));
 const uuid_1 = require("uuid");
 const db_config_1 = __importDefault(require("../Config/db-config"));
@@ -46,30 +46,55 @@ const getOneAnswer = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.getOneAnswer = getOneAnswer;
-// Answer a question
+// Add an answer
 function addAnswer(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const answerId = (0, uuid_1.v4)();
-            const questionId = (0, uuid_1.v4)();
-            const userId = (0, uuid_1.v4)();
-            const { answer, timeCreated } = req.body;
+            const { answer, timeCreated, userId, questionId } = req.body;
             const pool = yield mssql_1.default.connect(db_config_1.default);
             yield pool.request()
                 .input('id', answerId)
                 .input('answer', answer)
-                .input('timeCreated', timeCreated)
-                .input('userId', userId)
                 .input('questionId', questionId)
+                .input('userId', userId)
+                .input('timeCreated', timeCreated)
                 .execute('InsertUpdateAnswer');
-            res.status(201).json(({ message: 'Answer Added' }));
+            res.status(201).json(({ message: 'Answer Added Successfully' }));
         }
         catch (error) {
-            res.status(404).json(error.message);
+            res.status(500).json(error.message);
         }
     });
 }
 exports.addAnswer = addAnswer;
+// update answer controller
+function updateAnswer(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const { answer, timeCreated, userId, questionId } = req.body;
+            const pool = yield mssql_1.default.connect(db_config_1.default);
+            const oneAnswer = yield (yield pool.request()
+                .input('id', req.params.id)
+                .execute('getAnswersById')).recordset[0];
+            if (oneAnswer) {
+                yield pool.request()
+                    .input('id', req.params.id)
+                    .input('answer', answer)
+                    .input('questionId', questionId)
+                    .input('userId', userId)
+                    .input('timeCreated', timeCreated)
+                    .execute('InsertUpdateAnswer');
+                return res.status(201).json(({ message: 'Question Updated' }));
+            }
+            res.status(404).json(({ error: 'Question Not Found' }));
+        }
+        catch (error) {
+            res.status(500).json(error.message);
+        }
+    });
+}
+exports.updateAnswer = updateAnswer;
 // delete answer
 const deleteAnswer = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

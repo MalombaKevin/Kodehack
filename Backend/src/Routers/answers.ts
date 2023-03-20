@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { addAnswer, deleteAnswer, getAllAnswers, getOneAnswer } from "../Controllers/answersControllers";
+import { addAnswer, deleteAnswer, getAllAnswers, getOneAnswer, updateAnswer } from "../Controllers/answersControllers";
 
 
 const answersRouter = Router() 
@@ -8,7 +8,7 @@ const answersRouter = Router()
 answersRouter.get('', getAllAnswers) 
 answersRouter.get('/:id', getOneAnswer) 
 answersRouter.post('', addAnswer) 
-answersRouter.put('/:id') 
+answersRouter.put('/:id', updateAnswer) 
 answersRouter.delete('/:id', deleteAnswer) 
 
 

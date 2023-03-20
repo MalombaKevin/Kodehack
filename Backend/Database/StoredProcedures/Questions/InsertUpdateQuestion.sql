@@ -8,29 +8,29 @@ CREATE PROCEDURE InsertUpdateQuestion
 @title VARCHAR(255),
 @category VARCHAR(255),
 @question VARCHAR(255),
-@userId VARCHAR(255),
-@timeCreated DATE
+@timeCreated DATE,
+@userId VARCHAR(255)
+
 
 AS
 BEGIN
     IF EXISTS (SELECT * FROM question WHERE questionId = @id) 
     BEGIN
         UPDATE question
-        SET title = @title, category = @category, question = @question, userId = @userId,  timeCreated= @timeCreated 
+        SET title = @title, category = @category, question = @question,timeCreated= @timeCreated, userId = @userId
         WHERE questionId = @id
-        SELECT * FROM question WHERE questionId = @id
     END
     ELSE
     BEGIN
-        INSERT INTO question (questionId, title, category, question)
-        VALUES (@Id, @title, @category, @question)
-        SELECT * FROM question WHERE questionId = @id
+        INSERT INTO question (questionId, title, category, question,timeCreated,userId)
+        VALUES (@id, @title, @category, @question, @timeCreated, @userId)
+     
     END
 END
 
-EXEC InsertUpdateQuestion @id='2', @title='Sasa', @category='Swahili',@question ='Ukoje',
-@userId=1,
-@timeCreated='12-13-15'
+-- EXEC InsertUpdateQuestion @id='5', @title='Sasa', @category='Swahili',@question ='Ukoje',@timeCreated='12-13-15',
+-- @userId='1'
+
 
 SELECT * FROM question
 

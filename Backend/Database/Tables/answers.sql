@@ -11,12 +11,12 @@ CREATE TABLE answers (
     FOREIGN KEY (userId) REFERENCES users(userId),
 
     questionId VARCHAR(255),
-    FOREIGN KEY (questionId) REFERENCES question(questionId)
+    FOREIGN KEY (questionId) REFERENCES question(questionId) ON DELETE CASCADE
 );
 
 SELECT * FROM answers
 
 INSERT INTO answers
-VALUES('2','Bonjour', '12-12-23', '1', '2')
+VALUES('1','Bonjour', '12-12-23', '1', '1')
 
 DROP TABLE answers
