@@ -2,7 +2,7 @@ USE [kodehack]
 
 GO
 
-CREATE PROCEDURE InsertUpdateAnswer
+CREATE OR ALTER PROCEDURE InsertUpdateAnswer
 
 @id VARCHAR(255),
 @answer VARCHAR(255),
@@ -17,18 +17,18 @@ BEGIN
         UPDATE answers
         SET answer = @answer, questionId = @questionId, userId = @userId,  timeCreated= @timeCreated 
         WHERE answerId = @id
-        SELECT * FROM answers WHERE answerId = @id
+        -- SELECT * FROM answers WHERE answerId = @id
     END
     ELSE
     BEGIN
-        INSERT INTO answers (answerId, answer, timeCreated, userId, questionId)
-        VALUES (@Id, @answer,  @timeCreated,@questionId, @userId)
-        SELECT * FROM answers WHERE answerId = @id
+        INSERT INTO answers (answerId, answer, questionId, userId, timeCreated)
+        VALUES (@id, @answer, @questionId, @userId, @timeCreated)
+        -- SELECT * FROM answers WHERE answerId = @id
     END
 END
 
-EXECUTE InsertUpdateAnswer @id='3', @answer='Kwega muno', @questionId='1',@userId ='2',
-@timeCreated='12-12-12'
+-- EXECUTE InsertUpdateAnswer @id='3', @answer='Kwega muno', @questionId='1',@userId ='2',
+-- @timeCreated='12-12-12'
 
 SELECT * FROM answers
 
