@@ -4,12 +4,17 @@ import { v4 as uid } from 'uuid'
 import DBconfig from '../Config/db-config'
 import { authSchema } from '../Helpers'
 import Bcrypt from 'bcrypt'
-import { User } from '../Models'
+import { DecodedData, User } from '../Models'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+import path from 'path'
+dotenv.config({ path: path.resolve(__dirname, '../../env') }) 
+
 
 interface ExtendedRequest extends Request {
 
     body: {email: string, password: string}
-    params: { id: string }
+    info?: DecodedData
 
 }
 
@@ -73,11 +78,32 @@ export async function LoginUser(req:ExtendedRequest, res:Response){
   return res.status(404).json({error:'password Not found'})
 } 
 
+const payload = user.map(item=>{
 
-res.status(200).json({message:'User Loggedin'})  
+  const {password,...rest} = item
+  return rest
+
+}) 
+const token = jwt.sign(payload[0], process.env.SECRETKEY as string,{expiresIn:'3600s'}) 
+
+
+
+res.status(200).json({message:'User Loggedin', token})  
   
  } catch (error) {
-  res.status(500).json(error)  
+ return res.status(500).json(error)  
 }
 
+}
+
+export async function HomePage(req:ExtendedRequest, res:Response) {
+  try {
+
+    if (req.info) {
+      return res.status(200).json(`Welcome ${req.info.email}` )
+  }
+    
+  } catch (error) {
+    
+  }
 }
