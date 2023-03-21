@@ -101,3 +101,14 @@ POST http://localhost:5000/kodehack/auth/register
 ###
 #Login
 POST http://localhost:5000/kodehack/auth/login
+Content-Type: application/json
+
+{
+    "email": "simon@gmail.com",
+    "password": "KMalomba;75!"
+}
+
+###
+#test authorization
+GET http://localhost:5000/kodehack/auth/home
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNTI5NzIxMS05YmFhLTQzYTctODYzNy1lMWZkOTRiYzc5MTgiLCJlbWFpbCI6Im1hbG9tYmFAZ21haWwuY29tIiwidGltZUNyZWF0ZWQiOiIyMDIzLTAzLTIxVDAwOjAwOjAwLjAwMFoiLCJpc19hZG1pbiI6ZmFsc2UsImlzX2RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE2NzkzOTY5NzUsImV4cCI6MTY3OTQwMDU3NX0.j0IFk6Rkyjdgwc6ew_QVfygYHCULQnbiG71ZUgelUE0
