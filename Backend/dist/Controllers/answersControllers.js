@@ -51,14 +51,13 @@ function addAnswer(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const answerId = (0, uuid_1.v4)();
-            const { answer, timeCreated, userId, questionId } = req.body;
+            const { answer, userId, questionId } = req.body;
             const pool = yield mssql_1.default.connect(db_config_1.default);
             yield pool.request()
                 .input('id', answerId)
                 .input('answer', answer)
                 .input('questionId', questionId)
                 .input('userId', userId)
-                .input('timeCreated', timeCreated)
                 .execute('InsertUpdateAnswer');
             res.status(201).json(({ message: 'Answer Added Successfully' }));
         }
@@ -72,7 +71,7 @@ exports.addAnswer = addAnswer;
 function updateAnswer(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { answer, timeCreated, userId, questionId } = req.body;
+            const { answer, userId, questionId } = req.body;
             const pool = yield mssql_1.default.connect(db_config_1.default);
             const oneAnswer = yield (yield pool.request()
                 .input('id', req.params.id)
@@ -83,7 +82,6 @@ function updateAnswer(req, res) {
                     .input('answer', answer)
                     .input('questionId', questionId)
                     .input('userId', userId)
-                    .input('timeCreated', timeCreated)
                     .execute('InsertUpdateAnswer');
                 return res.status(201).json(({ message: 'Question Updated' }));
             }

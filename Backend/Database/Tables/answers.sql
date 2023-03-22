@@ -16,6 +16,9 @@ CREATE TABLE answers (
     is_checked BIT NOT NULL DEFAULT 0
 );
 
+USE kodehack
+
+GO
 SELECT * FROM answers
 
 INSERT INTO answers

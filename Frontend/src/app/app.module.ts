@@ -8,6 +8,7 @@ import { NavbarComponent } from "./Components/navbar/navbar.component";
 import { FooterComponent } from "./Components/footer/footer.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TruncatePipePipe } from './Pipes/truncate-pipe.pipe';
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TruncatePipePipe } from './Pipes/truncate-pipe.pipe';
         AppRoutingModule,
         NavbarComponent,
         FooterComponent,
-        TruncatePipePipe
+        TruncatePipePipe,
+        HttpClientModule
        
     ]
 })

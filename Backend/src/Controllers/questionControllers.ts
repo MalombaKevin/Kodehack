@@ -7,7 +7,7 @@ import { Question } from '../Models'
 
 interface ExtendedRequest extends Request {
 
-    body: { title: string, category: string, question: string, timeCreated: Date, userId: string }
+    body: { title: string, category: string, question: string, userId: string }
     params: { id: string }
 
 }
@@ -57,7 +57,7 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
 
     try {
         const questionId = uid()
-        const { title, category, question, timeCreated, userId } = req.body
+        const { title, category, question, userId } = req.body
 
         const {error} = questionSchema.validate(req.body)
         if (error) {           
@@ -71,7 +71,6 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
             .input('title', title)
             .input('category', category)
             .input('question', question)
-            .input('timeCreated', timeCreated)
             .input('userId', userId)
             .execute('InsertUpdateQuestion')
 

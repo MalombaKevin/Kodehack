@@ -5,8 +5,8 @@ import { verifyToken } from "../Middleware/verifyToken";
 
 const registerRouter = Router() 
 
-registerRouter.post('/register', RegisterUser) 
-registerRouter.post('/login', LoginUser) 
+registerRouter.post('/register',  RegisterUser) 
+registerRouter.post('/login',  LoginUser) 
 registerRouter.get('/home',verifyToken ,HomePage)  //protected route
 
 

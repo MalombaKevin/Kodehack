@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class LoginComponent implements OnInit{
 
   form!:FormGroup
+
+  constructor(public AuthService:AuthService, private authentication:AuthenticationService, private router:Router){}
   ngOnInit(): void {
 
     this.form = new FormGroup({
@@ -23,11 +26,19 @@ export class LoginComponent implements OnInit{
     
   }
 
-  constructor(public AuthService:AuthService){}
+ 
 
   submitForm(){   
-   console.log(this.form);
+   this.authentication.loginUser(this.form.value).subscribe(response=>{
+    this.AuthService.setName(response.username)
+    this.AuthService.login() 
+    localStorage.setItem('token', response.token)   
+    this.router.navigate(['/home'])
 
+    console.log(response.token);
+    
+    
+   })
     
   }
   

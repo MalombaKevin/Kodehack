@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'bug', canActivate:[AuthGuardService], component:AddQuestionComponent},
   {path:'signup', loadComponent:()=>import('../app/Components/signup/signup.component').then(l=>l.SignupComponent)},
   {path:'login', loadComponent:()=>import('./Components/login/login.component').then(l=>l.LoginComponent)},
-  {path:'admin', loadComponent:()=>import('../app/Components/Admin/admin/admin.component').then(l=>l.AdminComponent),
+  {path:'admin',canActivate:[AuthGuardService], loadComponent:()=>import('../app/Components/Admin/admin/admin.component').then(l=>l.AdminComponent),
 
   children:[
     {path:'', component:AnalyticsComponent},

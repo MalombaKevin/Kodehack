@@ -52,7 +52,7 @@ function addQuestion(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const questionId = (0, uuid_1.v4)();
-            const { title, category, question, timeCreated, userId } = req.body;
+            const { title, category, question, userId } = req.body;
             const { error } = Helpers_1.questionSchema.validate(req.body);
             if (error) {
                 res.status(422).json(error.details[0].message);
@@ -63,7 +63,6 @@ function addQuestion(req, res) {
                 .input('title', title)
                 .input('category', category)
                 .input('question', question)
-                .input('timeCreated', timeCreated)
                 .input('userId', userId)
                 .execute('InsertUpdateQuestion');
             res.status(201).json(({ message: 'Question Added' }));

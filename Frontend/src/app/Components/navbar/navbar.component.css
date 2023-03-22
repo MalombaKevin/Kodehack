@@ -11,6 +11,6 @@ img{
 .active{
    color: red;
    background-color: transparent;   
-   font-size: x-large;
+   font-weight: 900;
 }
 
