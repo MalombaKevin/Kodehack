@@ -14,6 +14,8 @@ CREATE TABLE answerVotes (
 
     answerId VARCHAR(255),
     FOREIGN KEY (answerId) REFERENCES answers(answerId)
+
+     
 );
 
 SELECT * FROM answerVotes

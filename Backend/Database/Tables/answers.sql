@@ -11,12 +11,14 @@ CREATE TABLE answers (
     FOREIGN KEY (userId) REFERENCES users(userId),
 
     questionId VARCHAR(255),
-    FOREIGN KEY (questionId) REFERENCES question(questionId) ON DELETE CASCADE
+    FOREIGN KEY (questionId) REFERENCES question(questionId) ON DELETE CASCADE,
+
+    is_checked BIT NOT NULL DEFAULT 0
 );
 
 SELECT * FROM answers
 
 INSERT INTO answers
-VALUES('1','Bonjour', '12-12-23', '1', '1')
+VALUES('1','Bonjour', '12-12-23', '1', '1', 0)
 
 DROP TABLE answers

@@ -37,7 +37,7 @@ function RegisterUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const id = (0, uuid_1.v4)();
-            const { email, password } = req.body;
+            const { username, email, password } = req.body;
             const { error } = Helpers_1.authSchema.validate(req.body);
             if (error) {
                 return res.status(422).json(error.details[0].message);
@@ -46,6 +46,7 @@ function RegisterUser(req, res) {
             const hashedPassword = yield bcrypt_1.default.hash(password, 10);
             yield pool.request()
                 .input('id', id)
+                .input('username', username)
                 .input('email', email)
                 .input('password', hashedPassword)
                 .execute('InsertUpdateUser');
@@ -61,7 +62,7 @@ function LoginUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { email, password } = req.body;
-            const { error } = Helpers_1.authSchema.validate(req.body);
+            const { error } = Helpers_1.loginSchema.validate(req.body);
             if (error) {
                 return res.status(422).json(error.details[0].message);
             }

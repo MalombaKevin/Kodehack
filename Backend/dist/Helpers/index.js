@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.authSchema = exports.questionSchema = void 0;
+exports.loginSchema = exports.authSchema = exports.questionSchema = void 0;
 const joi_1 = __importDefault(require("joi"));
 exports.questionSchema = joi_1.default.object({
     title: joi_1.default.string().required().messages({
@@ -23,6 +23,18 @@ exports.questionSchema = joi_1.default.object({
     }),
 });
 exports.authSchema = joi_1.default.object({
+    username: joi_1.default.string().required().messages({
+        'string.empty': 'username cannot be empty'
+    }),
+    email: joi_1.default.string().email().required().messages({
+        'string.empty': 'Email cannot be empty',
+        'string.email': 'Enter a valid email'
+    }),
+    password: joi_1.default.string().required().messages({
+        'string.empty': 'Password cannot be empty',
+    })
+});
+exports.loginSchema = joi_1.default.object({
     email: joi_1.default.string().email().required().messages({
         'string.empty': 'Email cannot be empty',
         'string.email': 'Enter a valid email'

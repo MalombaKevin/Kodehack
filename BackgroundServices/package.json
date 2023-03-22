@@ -1,0 +1,30 @@
+{
+  "name": "backgroundservices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon dist/server.js",
+    "start": "concurrently npm:start:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/concurrently": "^7.0.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/ejs": "^3.1.2",
+    "@types/nodemailer": "^6.4.7",
+    "concurrently": "^7.6.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "github:types/express",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.21"
+  },
+  "devDependencies": {
+    "@types/node-cron": "^3.0.7"
+  }
+}

@@ -29,6 +29,26 @@ userId:Joi.string().required().messages({
 
 export const authSchema=Joi.object({
 
+    username:Joi.string().required().messages({
+        'string.empty':'username cannot be empty'
+    }),
+
+    email:Joi.string().email().required().messages({
+        'string.empty':'Email cannot be empty',
+        'string.email':'Enter a valid email'
+    }),
+
+
+    password:Joi.string().required().messages({
+        'string.empty':'Password cannot be empty',
+    })
+    
+
+})
+
+
+export const loginSchema=Joi.object({
+
     email:Joi.string().email().required().messages({
         'string.empty':'Email cannot be empty',
         'string.email':'Enter a valid email'

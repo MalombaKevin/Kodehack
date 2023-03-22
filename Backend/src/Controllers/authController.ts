@@ -2,7 +2,7 @@ import { Request, RequestHandler, Response } from 'express'
 import mssql from 'mssql'
 import { v4 as uid } from 'uuid'
 import DBconfig from '../Config/db-config'
-import { authSchema } from '../Helpers'
+import { authSchema, loginSchema } from '../Helpers'
 import Bcrypt from 'bcrypt'
 import { DecodedData, User } from '../Models'
 import jwt from 'jsonwebtoken'
@@ -13,7 +13,7 @@ dotenv.config({ path: path.resolve(__dirname, '../../env') })
 
 interface ExtendedRequest extends Request {
 
-    body: {email: string, password: string}
+    body: {username: string,email: string, password: string}
     info?: DecodedData
 
 }
@@ -23,7 +23,7 @@ export async function RegisterUser(req:ExtendedRequest, res:Response){
 
   try {
     const id = uid() 
-    const { email, password } = req.body
+    const { username, email, password } = req.body
 
     const {error} = authSchema.validate(req.body)
     if (error) {           
@@ -35,6 +35,7 @@ export async function RegisterUser(req:ExtendedRequest, res:Response){
     const hashedPassword = await Bcrypt.hash(password,10) 
     await pool.request()
     .input('id', id)
+    .input('username', username)
     .input('email', email)
     .input('password', hashedPassword)
     .execute('InsertUpdateUser')
@@ -55,9 +56,8 @@ export async function LoginUser(req:ExtendedRequest, res:Response){
 
  try {
 
-  const { email, password } = req.body
-
-  const {error} = authSchema.validate(req.body)
+  const { email, password } = req.body 
+  const {error} = loginSchema.validate(req.body)
   if (error) {           
      return res.status(422).json(error.details[0].message)
   } 
