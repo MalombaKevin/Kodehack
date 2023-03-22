@@ -7,22 +7,21 @@ CREATE OR ALTER PROCEDURE InsertUpdateAnswer
 @id VARCHAR(255),
 @answer VARCHAR(255),
 @questionId VARCHAR(255),
-@userId VARCHAR(255),
-@timeCreated DATE
+@userId VARCHAR(255)
 
 AS
 BEGIN
     IF EXISTS (SELECT * FROM answers WHERE answerId = @id) 
     BEGIN
         UPDATE answers
-        SET answer = @answer, questionId = @questionId, userId = @userId,  timeCreated= @timeCreated 
+        SET answer = @answer, questionId = @questionId, userId = @userId
         WHERE answerId = @id
         -- SELECT * FROM answers WHERE answerId = @id
     END
     ELSE
     BEGIN
-        INSERT INTO answers (answerId, answer, questionId, userId, timeCreated)
-        VALUES (@id, @answer, @questionId, @userId, @timeCreated)
+        INSERT INTO answers (answerId, answer, questionId, userId)
+        VALUES (@id, @answer, @questionId, @userId)
         -- SELECT * FROM answers WHERE answerId = @id
     END
 END

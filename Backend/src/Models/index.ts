@@ -2,19 +2,19 @@
 
 export class Question {
 
-    constructor(public questionId: string, public title: string, public category: string, public question: string, public timeCreated: Date, userId: string) { }
+    constructor(public questionId: string, public title: string, public category: string, public question: string, public timeCreated: Date, userId: string,is_checked: string) { }
 
 }
 
 
 
 export class Answer {
-    constructor(public answerId: string, public answer: string, public timeCreated: Date, public userId: string, public questionId: string) { }
+    constructor(public answerId: string, public answer: string, public timeCreated: Date, public userId: string, public questionId: string, is_checked: string) { }
 }
 
 
 export class User {
-    constructor(public userId: string, public email: string, public password: string, public timeCreated: Date, public is_admin: string, is_deleted: string) { }
+    constructor(public userId: string,public username: string, public email: string, public password: string, public timeCreated: Date, public is_admin: boolean, is_deleted: boolean, public forgot_sent: boolean,public welcome_sent: boolean,) { }
 }
 
 

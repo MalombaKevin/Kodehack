@@ -4,12 +4,10 @@ CREATE PROCEDURE DeleteUser
     @id VARCHAR(255)
 AS
 BEGIN
-    UPDATE Users
-    SET is_deleted = 1
-    WHERE userId = @id
+  DELETE FROM users WHERE userId = @id
 END
 
-EXEC DeleteUser  @id=1
+EXEC DeleteUser  @id='2536c041-06e4-4a4b-896d-0cde649a1191'
 
 DROP PROCEDURE DeleteUser
 

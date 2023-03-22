@@ -5,6 +5,7 @@ GO
 CREATE PROCEDURE InsertUpdateUser
 
 @id VARCHAR(255),
+@username VARCHAR(255),
 @email VARCHAR(255),
 @password VARCHAR(255)
 
@@ -15,14 +16,14 @@ BEGIN
     IF EXISTS (SELECT * FROM users WHERE userId = @id) 
     BEGIN
         UPDATE users 
-        SET email = @email, password = @password
+        SET username=@username, email = @email, password = @password
         WHERE userId = @id
         SELECT * FROM users WHERE userId = @id
     END
     ELSE
     BEGIN
-        INSERT INTO users (userId, email, password)
-        VALUES (@id, @email, @password)
+        INSERT INTO users (userId, username,email, password)
+        VALUES (@id, @username, @email, @password)
         SELECT * FROM users WHERE userId = @id
     END
 END

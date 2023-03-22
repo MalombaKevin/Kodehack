@@ -8,7 +8,6 @@ CREATE PROCEDURE InsertUpdateQuestion
 @title VARCHAR(255),
 @category VARCHAR(255),
 @question VARCHAR(255),
-@timeCreated DATE,
 @userId VARCHAR(255)
 
 
@@ -17,13 +16,13 @@ BEGIN
     IF EXISTS (SELECT * FROM question WHERE questionId = @id) 
     BEGIN
         UPDATE question
-        SET title = @title, category = @category, question = @question,timeCreated= @timeCreated, userId = @userId
+        SET title = @title, category = @category, question = @question,userId = @userId
         WHERE questionId = @id
     END
     ELSE
     BEGIN
-        INSERT INTO question (questionId, title, category, question,timeCreated,userId)
-        VALUES (@id, @title, @category, @question, @timeCreated, @userId)
+        INSERT INTO question (questionId, title, category, question,userId)
+        VALUES (@id, @title, @category, @question,@userId)
      
     END
 END
