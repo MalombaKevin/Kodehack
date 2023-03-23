@@ -10,6 +10,15 @@ export class AuthService {
 
   isLoggedIn = false
   private username =''
+  private email =''
+  private is_admin =''
+
+
+  isAdmin = false
+
+
+  
+
 
   getUserName() {
      return this.username
@@ -18,6 +27,26 @@ export class AuthService {
   setName(username:string) {
     this.username=username
  }
+
+ getEmail() {
+  return this.email
+}
+
+
+// is_admin:
+
+setEmail(email:string) {
+ this.email=email
+}
+
+
+getRole() {
+  return this.is_admin
+}
+
+setRole(is_admin:string) {
+ this.is_admin=is_admin
+}
 
   getAuthStatus():Promise<boolean>{
 

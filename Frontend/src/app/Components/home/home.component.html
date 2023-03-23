@@ -19,18 +19,23 @@
 
         <div class="question-section" align="center">
 
-            <div class="question-card" align="left">
+            <div class="question-card" align="left" *ngFor="let question of questions.question$ | async">
 
-                <h5 routerLink="/debug" class="title" appTitleColor>Title of the question</h5>
-                <p >  {{text |truncatePipe}}</p>
-               
+                <h5 routerLink="/debug" class="title" appTitleColor> {{question.title}}</h5>
+
+                <p >  {{question.question|truncatePipe}}</p>
+                <span class="fw-light text-primary"> #{{question.category}}</span>
+              
 
                     <div class="card-analytics card-stats">
                         <div class="votes-answers card-stats">
                             <p> <span class="fw-bold"> 10</span>
                                 Votes</p>
                             <p><span class="fw-bold"> 10</span> Answers</p>
-                            <p> <span><span class="fw-bold text-primary">Posted at</span> 3/3/2023</span></p>
+                        
+               
+                           
+                            <p> <span><span class="fw-bold text-primary">Posted On</span> {{question.timeCreated|date}}</span></p>
 
                         </div>
 
@@ -38,7 +43,7 @@
                             <span><span class="fw-bold"> Posted by</span> John Doe</span> <br>
                           
                         </div>
-                    </div>
+                    </div> <br>
 
             </div>
         </div>

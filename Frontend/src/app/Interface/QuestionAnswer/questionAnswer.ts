@@ -7,6 +7,12 @@ export interface Question{
     timeCreated:string
 }
 
+export interface addQuestion{ 
+    title: string
+    category: string
+    question:string
+}
+
 export interface Answer{
     id?: string
     answer:string

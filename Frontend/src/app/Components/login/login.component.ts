@@ -31,9 +31,16 @@ export class LoginComponent implements OnInit{
   submitForm(){   
    this.authentication.loginUser(this.form.value).subscribe(response=>{
     this.AuthService.setName(response.username)
+    this.AuthService.setEmail(response.email)
+    this.AuthService.setRole(response.is_admin)
     this.AuthService.login() 
-    localStorage.setItem('token', response.token)   
-    this.router.navigate(['/home'])
+    localStorage.setItem('token', response.token) 
+    
+    if(response.token) 
+    {
+      this.router.navigate(['/home'])
+
+    }
 
     console.log(response.token);
     

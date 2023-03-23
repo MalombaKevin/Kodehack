@@ -17,5 +17,7 @@ export interface LoginSuccess {
     message: string
     token: string
     username: string
+    email: string
+    is_admin: string
 }
 

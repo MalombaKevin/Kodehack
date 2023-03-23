@@ -58,6 +58,11 @@
         </div>
       </div>
 
+
+      <button class="btn btn-md text-white fw-bolder" style="background-color: red;" routerLink="admin" *ngIf="authService.getRole()">
+        <i class="fa-solid fa-crown"></i>
+      </button>
+
      
 
     </div>
