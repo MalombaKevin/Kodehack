@@ -26,6 +26,7 @@ main{
     border: 1px solid whitesmoke;
     background-color: white;
     padding: 2%;
+    margin:  2%;
     width:70%;
     box-shadow:0 0 1rem rgba(0,0,0,0.2);
 }

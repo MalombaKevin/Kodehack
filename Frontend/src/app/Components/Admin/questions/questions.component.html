@@ -10,9 +10,9 @@
             <th class="p-3">Action</th>
         </tr>
 
-        <tr>
-            <td class="p-3">Title of the Questions</td>
-            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi iure eveniet quo. Impedit laudantium iure, aperiam ipsam sit quis culpa.</td>
+        <tr *ngFor="let question of questions.question$ | async">
+            <td class="p-3">{{question.title}}</td>
+            <td>{{question.question}}</td>
             <td class="p-3"> <i class="fa-solid fa-trash pt-1 pe-lg-3 h5" style="color: red;"></i></td>
         </tr>
 

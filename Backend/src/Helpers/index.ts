@@ -14,13 +14,9 @@ question:Joi.string().required().messages({
     'string.empty':'Question cannot be empty'
 }),
 
-timeCreated:Joi.string().required().messages({
-    'string.empty':'Time cannot be empty'
-}), 
-
-userId:Joi.string().required().messages({
-    'string.empty':'User Id cannot be empty'
-}),
+// userId:Joi.string().required().messages({
+//     'string.empty':'User Id cannot be empty'
+// }),
  
 
 }) 

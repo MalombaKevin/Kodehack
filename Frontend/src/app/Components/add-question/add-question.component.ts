@@ -27,7 +27,7 @@ constructor(private bug:QuestionsService, private router:Router ){
     console.log(res);    
   }
     )
-  this.form.reset()   
+  // this.form.reset()   
   this.router.navigate(['/home'])
   }
 

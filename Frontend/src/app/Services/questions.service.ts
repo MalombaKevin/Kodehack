@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { addQuestion, Question } from '../Interface/QuestionAnswer/questionAnswer';
 import { Message } from '../Interface/User/user';
 
@@ -30,8 +30,11 @@ export class QuestionsService {
     
   }
 
-  getAllQuestions(){ 
+
+  getUserQuestion(){ 
     const token = localStorage.getItem('token') as string
+
+    if(token){
     this.http.get<Question[]>('http://localhost:5000/kodehack/question', { 
  
     headers : new HttpHeaders({ 
@@ -41,14 +44,31 @@ export class QuestionsService {
     }).subscribe(response=>{
      this.question$.next(response)
     })
-    
   }
-
-  getUserQuestion(){ 
     
     
   }
 
 
+  getAllQuestions(): Observable<Question[]> {
+    const token = localStorage.getItem('token') as string;
+  
+    if (token) {
+      return this.http.get<Question[]>('http://localhost:5000/kodehack/question', {
+        headers: new HttpHeaders({ 
+          token: token
+        })
+      });
+    }
+    // Return an empty observable if the token is missing
+    return of([]);
+  }
 
+  
 }
+  
+  
+  
+  
+  
+  

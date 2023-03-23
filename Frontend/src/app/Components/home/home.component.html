@@ -3,7 +3,8 @@
     <div class="container">
 
         <div class="greeting text-center fw-bold p-2">
-            <h4>Good Morning {{auth.getUserName()}}</h4>
+            <h4> <span class="h6"> Greetings </span> <span class="h4">{{auth.getUserName()}}</span>  </h4>
+          
         </div>
 
         <div class="top-languages-tags pb-5">
@@ -19,9 +20,10 @@
 
         <div class="question-section" align="center">
 
-            <div class="question-card" align="left" *ngFor="let question of questions.question$ | async">
+            <div class="question-card" align="left" *ngFor="let question of questionss">
 
-                <h5 routerLink="/debug" class="title" appTitleColor> {{question.title}}</h5>
+                <h5 [routerLink]="['/debug', question.id ]" class="title" appTitleColor> {{question.title}}</h5>
+                <hr>
 
                 <p >  {{question.question|truncatePipe}}</p>
                 <span class="fw-light text-primary"> #{{question.category}}</span>
@@ -40,12 +42,14 @@
                         </div>
 
                         <div class="author-time">
-                            <span><span class="fw-bold"> Posted by</span> John Doe</span> <br>
+                            <span><span class="fw-bold"> Posted by</span> {{auth.getUserName()}}</span> <br>
                           
                         </div>
                     </div> <br>
 
+
             </div>
+            
         </div>
 
 

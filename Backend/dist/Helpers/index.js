@@ -15,12 +15,9 @@ exports.questionSchema = joi_1.default.object({
     question: joi_1.default.string().required().messages({
         'string.empty': 'Question cannot be empty'
     }),
-    timeCreated: joi_1.default.string().required().messages({
-        'string.empty': 'Time cannot be empty'
-    }),
-    userId: joi_1.default.string().required().messages({
-        'string.empty': 'User Id cannot be empty'
-    }),
+    // userId:Joi.string().required().messages({
+    //     'string.empty':'User Id cannot be empty'
+    // }),
 });
 exports.authSchema = joi_1.default.object({
     username: joi_1.default.string().required().messages({
