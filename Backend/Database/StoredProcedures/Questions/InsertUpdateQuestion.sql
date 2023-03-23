@@ -27,8 +27,6 @@ BEGIN
     END
 END
 
--- EXEC InsertUpdateQuestion @id='5', @title='Sasa', @category='Swahili',@question ='Ukoje',@timeCreated='12-13-15',
--- @userId='1'
 
 
 SELECT * FROM question

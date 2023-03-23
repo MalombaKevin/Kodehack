@@ -19,7 +19,9 @@ INSERT INTO question
 VALUES
     ('1', 'Hi', 'ENG', 'Hi there', '12-13-15' , '1', 0)
 
+USE kodehack
 
+GO
 SELECT *
 FROM question
 

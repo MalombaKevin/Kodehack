@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { addQuestion,deleteQuestion,getAllQuestions, getOneQuestion, updateQuestion} from "../Controllers/questionControllers";
+import { verifyToken } from "../Middleware/verifyToken";
 
  const questionsRouter = Router() 
- questionsRouter.get('', getAllQuestions) 
- questionsRouter.post('', addQuestion) 
- questionsRouter.get('/:id', getOneQuestion) 
- questionsRouter.put('/:id', updateQuestion) 
- questionsRouter.delete('/:id', deleteQuestion) 
+ questionsRouter.get('', verifyToken, getAllQuestions) 
+ questionsRouter.post('', verifyToken, addQuestion) 
+ questionsRouter.get('/:id',verifyToken,  getOneQuestion) 
+ questionsRouter.put('/:id',verifyToken,  updateQuestion) 
+ questionsRouter.delete('/:id',verifyToken,  deleteQuestion) 
 
 
 

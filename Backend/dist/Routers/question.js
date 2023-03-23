@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const questionControllers_1 = require("../Controllers/questionControllers");
+const verifyToken_1 = require("../Middleware/verifyToken");
 const questionsRouter = (0, express_1.Router)();
-questionsRouter.get('', questionControllers_1.getAllQuestions);
-questionsRouter.post('', questionControllers_1.addQuestion);
-questionsRouter.get('/:id', questionControllers_1.getOneQuestion);
-questionsRouter.put('/:id', questionControllers_1.updateQuestion);
-questionsRouter.delete('/:id', questionControllers_1.deleteQuestion);
+questionsRouter.get('', verifyToken_1.verifyToken, questionControllers_1.getAllQuestions);
+questionsRouter.post('', verifyToken_1.verifyToken, questionControllers_1.addQuestion);
+questionsRouter.get('/:id', verifyToken_1.verifyToken, questionControllers_1.getOneQuestion);
+questionsRouter.put('/:id', verifyToken_1.verifyToken, questionControllers_1.updateQuestion);
+questionsRouter.delete('/:id', verifyToken_1.verifyToken, questionControllers_1.deleteQuestion);
 exports.default = questionsRouter;

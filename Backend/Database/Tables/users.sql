@@ -30,6 +30,8 @@ SELECT * FROM users WHERE welcome_sent=0
 
 DROP TABLE users
 
+DELETE FROM users
+
 DROP DATABASE kodehack
 
 

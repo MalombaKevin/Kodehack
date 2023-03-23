@@ -50,10 +50,10 @@ function RegisterUser(req, res) {
                 .input('email', email)
                 .input('password', hashedPassword)
                 .execute('InsertUpdateUser');
-            res.status(400).json({ message: 'User Registered' });
+            res.status(200).json({ message: 'User Registered' });
         }
         catch (error) {
-            res.status(500).json(error);
+            res.status(500).json(error.message);
         }
     });
 }
@@ -69,8 +69,8 @@ function LoginUser(req, res) {
             const pool = yield mssql_1.default.connect(db_config_1.default);
             const user = yield (yield pool.request().input('email', email).execute('GetUserByEmail')).recordset;
             console.log(user);
-            if (!user[0]) {
-                return res.status(404).json({ makosa: 'User Not found' });
+            if (user.length < 1) {
+                return res.status(404).json({ error: 'User Not found' });
             }
             const valid = yield bcrypt_1.default.compare(password, user[0].password);
             if (!valid) {
@@ -80,8 +80,8 @@ function LoginUser(req, res) {
                 const { password } = item, rest = __rest(item, ["password"]);
                 return rest;
             });
-            const token = jsonwebtoken_1.default.sign(payload[0], process.env.SECRETKEY, { expiresIn: '3600s' });
-            res.status(200).json({ message: 'User Loggedin', token });
+            const token = jsonwebtoken_1.default.sign(payload[0], process.env.SECRETKEY, { expiresIn: '1d' });
+            return res.status(200).json({ message: 'User Loggedin', token: token, username: user[0].username });
         }
         catch (error) {
             return res.status(500).json(error);
@@ -97,6 +97,7 @@ function HomePage(req, res) {
             }
         }
         catch (error) {
+            console.log(error);
         }
     });
 }

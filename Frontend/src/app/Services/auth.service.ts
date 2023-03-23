@@ -6,9 +6,18 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor( private router:Router) { }
+  constructor(private router:Router) { }
 
   isLoggedIn = false
+  private username =''
+
+  getUserName() {
+     return this.username
+  }
+
+  setName(username:string) {
+    this.username=username
+ }
 
   getAuthStatus():Promise<boolean>{
 
@@ -21,12 +30,14 @@ export class AuthService {
    }
 
   login(){
+   
     this.isLoggedIn = true
     this.router.navigate(['home'])
     
   }
 
   logout(){
+    localStorage.removeItem('token')
     this.isLoggedIn = false
     this.router.navigate([''])
   }

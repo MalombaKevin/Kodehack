@@ -1,15 +1,21 @@
 export interface RegisterUser {
-    id?: string
-    username: string;
-    email: string
-    password: string
-    isAdmin?: boolean
-    token?: string
+    username:string
+    email:string
+    password:string
+}
+
+export interface Message {
+    message:string
 }
 
 export interface LoginUser {
     email: string
     password: string
-    token?: string
-    isAdmin?: boolean
 }
+
+export interface LoginSuccess {
+    message: string
+    token: string
+    username: string
+}
+

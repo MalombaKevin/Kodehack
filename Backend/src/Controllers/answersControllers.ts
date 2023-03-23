@@ -6,7 +6,7 @@ import { Answer } from '../Models'
 
 interface ExtendedRequest extends Request {
 
-    body: { answer: string,questionId: string,userId: string, timeCreated: Date }
+    body: { answer: string,questionId: string,userId: string }
     params: { id: string }
 
 }
@@ -57,7 +57,7 @@ export async function addAnswer(req: ExtendedRequest, res: Response) {
 
     try {
         const answerId = uid()
-        const { answer, timeCreated, userId, questionId } = req.body
+        const { answer, userId, questionId } = req.body
         const pool = await mssql.connect(DBconfig)
         await pool.request()
 
@@ -65,7 +65,6 @@ export async function addAnswer(req: ExtendedRequest, res: Response) {
             .input('answer', answer) 
             .input('questionId', questionId)           
             .input('userId', userId)           
-            .input('timeCreated', timeCreated)
             .execute('InsertUpdateAnswer')
 
             res.status(201).json(({ message: 'Answer Added Successfully' }))
@@ -81,7 +80,7 @@ export async function addAnswer(req: ExtendedRequest, res: Response) {
 export async function updateAnswer(req: ExtendedRequest, res: Response) {
 
     try {
-        const { answer, timeCreated, userId, questionId } = req.body
+        const { answer, userId, questionId } = req.body
         const pool = await mssql.connect(DBconfig)
 
         const oneAnswer: Answer[] = await (await pool.request()
@@ -98,7 +97,6 @@ export async function updateAnswer(req: ExtendedRequest, res: Response) {
             .input('answer', answer) 
             .input('questionId', questionId)           
             .input('userId', userId)           
-            .input('timeCreated', timeCreated)
             .execute('InsertUpdateAnswer')
 
             return res.status(201).json(({ message: 'Question Updated' }))
