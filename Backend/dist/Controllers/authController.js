@@ -81,7 +81,7 @@ function LoginUser(req, res) {
                 return rest;
             });
             const token = jsonwebtoken_1.default.sign(payload[0], process.env.SECRETKEY, { expiresIn: '1d' });
-            return res.status(200).json({ message: 'User Loggedin', token: token, username: user[0].username });
+            return res.status(200).json({ message: 'User Loggedin', token: token, username: user[0].username, email: user[0].email, is_admin: user[0].is_admin });
         }
         catch (error) {
             return res.status(500).json(error);

@@ -7,7 +7,7 @@ import { Question } from '../Models'
 
 interface ExtendedRequest extends Request {
 
-    body: { title: string, category: string, question: string, userId: string }
+    body: { title: string, category: string, question: string }
     params: { id: string }
 
 }
@@ -18,11 +18,11 @@ export const getAllQuestions: RequestHandler = async (req, res) => {
     try {
         const pool = await mssql.connect(DBconfig)
         const questions: Question[] = await (await pool.request().execute('getAllQuestions')).recordset
-        res.status(200).json(questions)
+       return res.status(200).json(questions)
 
     } catch (error: any) {
 
-        res.status(404).json(error.message)
+        return res.status(404).json(error.message)
     }
 }
 
@@ -43,11 +43,11 @@ export const getOneQuestion = async (req: ExtendedRequest, res: Response) => {
         if (!question) {
             res.status(400).json({ message: 'Question Not Found' })
         }
-        res.status(201).json(question)
+       return res.status(201).json(question)
 
     } catch (error: any) {
 
-        res.status(404).json(error.message)
+      return  res.status(404).json(error.message)
     }
 
 }
@@ -57,7 +57,7 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
 
     try {
         const questionId = uid()
-        const { title, category, question, userId } = req.body
+        const { title, category, question} = req.body
 
         const {error} = questionSchema.validate(req.body)
         if (error) {           
@@ -71,14 +71,13 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
             .input('title', title)
             .input('category', category)
             .input('question', question)
-            .input('userId', userId)
             .execute('InsertUpdateQuestion')
 
-        res.status(201).json(({ message: 'Question Added' }))
+     return   res.status(201).json(({ message: 'Question Added' }))
 
     } catch (error: any) {
 
-        res.status(500).json(error.message)
+      return  res.status(500).json(error.message)
     }
 
 
@@ -88,7 +87,7 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
 export async function updateQuestion(req: ExtendedRequest, res: Response) {
 
     try {
-        const { title, category, question, timeCreated, userId } = req.body
+        const { title, category, question} = req.body
 
         const pool = await mssql.connect(DBconfig)
 
@@ -106,20 +105,18 @@ export async function updateQuestion(req: ExtendedRequest, res: Response) {
                 .input('title', title)
                 .input('category', category)
                 .input('question', question)
-                .input('timeCreated', timeCreated)
-                .input('userId', userId)
                 .execute('InsertUpdateQuestion')
 
             return res.status(201).json(({ message: 'Question Updated' }))
         }
 
-        res.status(404).json(({ error: 'Question Not Found' }))
+       return res.status(404).json(({ error: 'Question Not Found' }))
 
 
 
     } catch (error: any) {
 
-        res.status(500).json(error.message)
+       return res.status(500).json(error.message)
     }
 
 }

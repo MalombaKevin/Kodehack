@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TruncatePipePipe } from 'src/app/Pipes/truncate-pipe.pipe';
 import { any } from 'joi';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,6 +25,8 @@ export class ProfileComponent{
   //     this.onlinestatus=`offline`
   //   }    
   // }
+
+  constructor(public authService:AuthService){}
 
 
 

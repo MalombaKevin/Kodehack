@@ -22,10 +22,10 @@ const getAllQuestions = (req, res) => __awaiter(void 0, void 0, void 0, function
     try {
         const pool = yield mssql_1.default.connect(db_config_1.default);
         const questions = yield (yield pool.request().execute('getAllQuestions')).recordset;
-        res.status(200).json(questions);
+        return res.status(200).json(questions);
     }
     catch (error) {
-        res.status(404).json(error.message);
+        return res.status(404).json(error.message);
     }
 });
 exports.getAllQuestions = getAllQuestions;
@@ -40,10 +40,10 @@ const getOneQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function*
         if (!question) {
             res.status(400).json({ message: 'Question Not Found' });
         }
-        res.status(201).json(question);
+        return res.status(201).json(question);
     }
     catch (error) {
-        res.status(404).json(error.message);
+        return res.status(404).json(error.message);
     }
 });
 exports.getOneQuestion = getOneQuestion;
@@ -52,7 +52,7 @@ function addQuestion(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const questionId = (0, uuid_1.v4)();
-            const { title, category, question, userId } = req.body;
+            const { title, category, question } = req.body;
             const { error } = Helpers_1.questionSchema.validate(req.body);
             if (error) {
                 res.status(422).json(error.details[0].message);
@@ -63,12 +63,11 @@ function addQuestion(req, res) {
                 .input('title', title)
                 .input('category', category)
                 .input('question', question)
-                .input('userId', userId)
                 .execute('InsertUpdateQuestion');
-            res.status(201).json(({ message: 'Question Added' }));
+            return res.status(201).json(({ message: 'Question Added' }));
         }
         catch (error) {
-            res.status(500).json(error.message);
+            return res.status(500).json(error.message);
         }
     });
 }
@@ -77,7 +76,7 @@ exports.addQuestion = addQuestion;
 function updateQuestion(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { title, category, question, timeCreated, userId } = req.body;
+            const { title, category, question } = req.body;
             const pool = yield mssql_1.default.connect(db_config_1.default);
             const oneQuestion = yield (yield pool.request()
                 .input('id', req.params.id)
@@ -88,15 +87,13 @@ function updateQuestion(req, res) {
                     .input('title', title)
                     .input('category', category)
                     .input('question', question)
-                    .input('timeCreated', timeCreated)
-                    .input('userId', userId)
                     .execute('InsertUpdateQuestion');
                 return res.status(201).json(({ message: 'Question Updated' }));
             }
-            res.status(404).json(({ error: 'Question Not Found' }));
+            return res.status(404).json(({ error: 'Question Not Found' }));
         }
         catch (error) {
-            res.status(500).json(error.message);
+            return res.status(500).json(error.message);
         }
     });
 }
