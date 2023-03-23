@@ -44,8 +44,8 @@ getRole() {
   return this.is_admin
 }
 
-setRole(is_admin:string) {
- this.is_admin=is_admin
+setRole(is_admin:boolean) {
+ this.is_admin
 }
 
   getAuthStatus():Promise<boolean>{
@@ -53,20 +53,20 @@ setRole(is_admin:string) {
     const promise = new Promise<boolean>((resolve, reject)=>{ 
       setTimeout(()=>{
         resolve(this.isLoggedIn)
-       }, 10)
+       })
     })
     return promise
    }
 
   login(){
-   
+
     this.isLoggedIn = true
     this.router.navigate(['home'])
     
   }
 
   logout(){
-    localStorage.removeItem('token')
+    localStorage.clear()
     this.isLoggedIn = false
     this.router.navigate([''])
   }

@@ -7,7 +7,8 @@ CREATE OR ALTER PROCEDURE InsertUpdateQuestion
 @id VARCHAR(255),
 @title VARCHAR(255),
 @category VARCHAR(255),
-@question VARCHAR(255)
+@question VARCHAR(255),
+@userId VARCHAR(255)
 
 
 AS
@@ -20,9 +21,8 @@ BEGIN
     END
     ELSE
     BEGIN
-        INSERT INTO question (questionId, title, category, question)
-        VALUES (@id, @title, @category, @question)
-     
+        INSERT INTO question (questionId, title, category, question,userId)
+        VALUES (@id, @title, @category, @question, @userId)
     END
 END
 

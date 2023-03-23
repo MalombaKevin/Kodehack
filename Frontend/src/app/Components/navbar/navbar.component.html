@@ -13,6 +13,11 @@
       <ul class="navbar-nav me-auto">
 
       </ul>
+      <ul class="navbar-nav me-auto">
+        <button class="btn btn-md text-light me-2 text-white fw-bolder" style="background-color: red;border: none; background-color: transparent; font-size: xx-large;" routerLink="admin" *ngIf="authService.isLoggedIn" > 
+          <i class="fa-solid fa-crown"></i>         
+        </button>
+      </ul>
       <div class="d-flex pe-3">
         <button class="btn btn-md text-light me-2" style="border: none;" routerLink="login"*ngIf="!authService.isLoggedIn">Login</button>
 
@@ -37,7 +42,7 @@
             <li>
               <p routerLink="profile" routerLinkActive="active" class=" dropdown-item profile-link text-center fw-bold h6">Profile</p>
               <hr class="dropdown-divider">
-
+             
             </li>
 
             <li>
@@ -59,9 +64,7 @@
       </div>
 
 
-      <button class="btn btn-md text-white fw-bolder" style="background-color: red;" routerLink="admin" *ngIf="authService.getRole()">
-        <i class="fa-solid fa-crown"></i>
-      </button>
+    
 
      
 

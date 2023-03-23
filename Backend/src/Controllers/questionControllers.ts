@@ -8,7 +8,8 @@ import { Question } from '../Models'
 interface ExtendedRequest extends Request {
 
     body: { title: string, category: string, question: string }
-    params: { id: string }
+    params: { id: string },
+    info?:any
 
 }
 
@@ -26,7 +27,7 @@ export const getAllQuestions: RequestHandler = async (req, res) => {
     }
 }
 
-// get one question
+
 
 export const getOneQuestion = async (req: ExtendedRequest, res: Response) => {
 
@@ -58,10 +59,14 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
     try {
         const questionId = uid()
         const { title, category, question} = req.body
+        const userId = req.info.userId
+
+        console.log(userId);
+        
 
         const {error} = questionSchema.validate(req.body)
         if (error) {           
-        res.status(422).json(error.details[0].message)
+        return res.status(422).json(error.details[0].message)
         }
 
         const pool = await mssql.connect(DBconfig)
@@ -71,6 +76,7 @@ export async function addQuestion(req: ExtendedRequest, res: Response) {
             .input('title', title)
             .input('category', category)
             .input('question', question)
+            .input('userId', userId)
             .execute('InsertUpdateQuestion')
 
      return   res.status(201).json(({ message: 'Question Added' }))

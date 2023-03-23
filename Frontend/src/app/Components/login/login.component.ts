@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit{
    this.authentication.loginUser(this.form.value).subscribe(response=>{
     this.AuthService.setName(response.username)
     this.AuthService.setEmail(response.email)
-    this.AuthService.setRole(response.is_admin)
+    // this.AuthService.setRole(response.is_admin)
     this.AuthService.login() 
     localStorage.setItem('token', response.token) 
-    
-    if(response.token) 
+    const token = localStorage.getItem('token') as string 
+    if(token) 
     {
       this.router.navigate(['/home'])
 
@@ -45,7 +45,12 @@ export class LoginComponent implements OnInit{
     console.log(response.token);
     
     
-   })
+   },
+   () =>{
+    this.router.navigate(['/'])
+    this.AuthService.logout() 
+  }
+   )
     
   }
   

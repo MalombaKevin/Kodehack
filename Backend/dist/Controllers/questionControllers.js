@@ -29,7 +29,6 @@ const getAllQuestions = (req, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.getAllQuestions = getAllQuestions;
-// get one question
 const getOneQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;
@@ -53,9 +52,11 @@ function addQuestion(req, res) {
         try {
             const questionId = (0, uuid_1.v4)();
             const { title, category, question } = req.body;
+            const userId = req.info.userId;
+            console.log(userId);
             const { error } = Helpers_1.questionSchema.validate(req.body);
             if (error) {
-                res.status(422).json(error.details[0].message);
+                return res.status(422).json(error.details[0].message);
             }
             const pool = yield mssql_1.default.connect(db_config_1.default);
             yield pool.request()
@@ -63,6 +64,7 @@ function addQuestion(req, res) {
                 .input('title', title)
                 .input('category', category)
                 .input('question', question)
+                .input('userId', userId)
                 .execute('InsertUpdateQuestion');
             return res.status(201).json(({ message: 'Question Added' }));
         }

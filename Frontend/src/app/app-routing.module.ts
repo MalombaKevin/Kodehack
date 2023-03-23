@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'', loadComponent:()=>import('../app/Components/landing-page/landing-page.component').then(l=>l.LandingPageComponent)},
   {path:'home', canActivate:[AuthGuardService],loadComponent:()=>import('../app/Components/home/home.component').then(l=>l.HomeComponent)},
   {path:'profile', canActivate:[AuthGuardService],loadComponent:()=>import('../app/Components/profile/profile.component').then(l=>l.ProfileComponent)},
-  {path:'debug', canActivate:[AuthGuardService], loadComponent:()=>import('../app/Components/debug-page/debug-page.component').then(l=>l.DebugPageComponent)},
+  {path:'debug/:id', canActivate:[AuthGuardService], loadComponent:()=>import('../app/Components/debug-page/debug-page.component').then(l=>l.DebugPageComponent)},
   {path:'bug', canActivate:[AuthGuardService], component:AddQuestionComponent},
   {path:'signup', loadComponent:()=>import('../app/Components/signup/signup.component').then(l=>l.SignupComponent)},
   {path:'login', loadComponent:()=>import('./Components/login/login.component').then(l=>l.LoginComponent)},

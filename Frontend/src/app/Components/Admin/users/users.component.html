@@ -10,9 +10,9 @@
             <th class="p-3">Action</th>
         </tr>
 
-        <tr>
-            <td class="p-3">John Doe</td>
-            <td>johndoe@gmail.com</td>
+        <tr *ngFor="let user of users" >
+            <td class="p-3">{{user.username }}</td>
+            <td>{{user.email }}</td>
             <td class="p-3"> <i class="fa-solid fa-trash pt-1 pe-lg-3 h5" style="color: red;"></i></td>
         </tr>
 
